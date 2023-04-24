@@ -24,6 +24,7 @@ secret_access_key = st.secrets["secret_access_key"]
 
 # file = st.secrets["file"]
 file = "/app/idp-genai-app/doc_sample/genai-demo-doc.pdf"
+file2 = st.secrets["file"]
 idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png"
 region = "us-east-2"
 
@@ -295,7 +296,7 @@ if st.button('Classify the Sample'):
 st.subheader('Structured and Semi-structured data extraction')
 # Table extraction with Textract 
 if st.button('Extract tables and forms'):   
-    resp = call_textract(input_document=file, features=[Textract_Features.TABLES, Textract_Features.FORMS], boto3_textract_client=textract)
+    resp = call_textract(input_document=file2, features=[Textract_Features.TABLES, Textract_Features.FORMS], boto3_textract_client=textract)
     tdoc = Document(resp)
     dfs = list()
 
@@ -414,7 +415,7 @@ if options:
         if options[i] == query_list[i].text:
             queries.append(query_list[i])
     queries_config = QueriesConfig(queries=queries)
-    response = call_textract(input_document=file,
+    response = call_textract(input_document=file2,
                                 features=[Textract_Features.QUERIES],
                                 queries_config=queries_config,  boto3_textract_client=textract)
     doc_ev = Document(response)
