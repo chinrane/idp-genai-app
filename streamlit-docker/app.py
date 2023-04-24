@@ -66,7 +66,7 @@ def generate_chunks(inp_str):
 session = boto3.session.Session(aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
 textract = session.client('textract', region_name=region)
 comprehend = session.client('comprehend', region_name=region)
-s3=boto3.session('s3', region_name=region)
+# s3=boto3.session('s3', region_name=region)
 prefix = 'idp/genai/'
 
 st.title('Conversation with Documents')
