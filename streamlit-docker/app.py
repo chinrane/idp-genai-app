@@ -59,9 +59,9 @@ def generate_chunks(inp_str):
 # role = sagemaker.get_execution_role()
 
 
-textract = boto3.client('textract')
-comprehend = boto3.client('comprehend')
-s3=boto3.client('s3')
+textract = boto3.client('textract', region_name=region)
+comprehend = boto3.client('comprehend', region_name=region)
+s3=boto3.client('s3', region_name=region)
 prefix = 'idp/genai/'
 
 st.title('Conversation with Documents')
