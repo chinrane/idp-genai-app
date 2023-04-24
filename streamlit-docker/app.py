@@ -295,7 +295,7 @@ if st.button('Classify the Sample'):
 st.subheader('Structured and Semi-structured data extraction')
 # Table extraction with Textract 
 if st.button('Extract tables and forms'):   
-    resp = call_textract(input_document=file, features=[Textract_Features.TABLES, Textract_Features.FORMS])
+    resp = call_textract(input_document=file, features=[Textract_Features.TABLES, Textract_Features.FORMS], region_name=region)
     tdoc = Document(resp)
     dfs = list()
 
@@ -416,7 +416,7 @@ if options:
     queries_config = QueriesConfig(queries=queries)
     response = call_textract(input_document=file,
                                 features=[Textract_Features.QUERIES],
-                                queries_config=queries_config)
+                                queries_config=queries_config, region_name=region)
     doc_ev = Document(response)
 
     doc_ev: t2.TDocumentSchema = t2.TDocumentSchema().load(response)
