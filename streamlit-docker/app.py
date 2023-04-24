@@ -63,7 +63,7 @@ def generate_chunks(inp_str):
 # os.environ["REGION"] = region
 # role = sagemaker.get_execution_role()
 
-session = boto3.session.Session(aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
+session = boto3.session.Session(aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key, region_name=region)
 textract = session.client('textract', region_name=region)
 comprehend = session.client('comprehend', region_name=region)
 # s3=boto3.session('s3', region_name=region)
