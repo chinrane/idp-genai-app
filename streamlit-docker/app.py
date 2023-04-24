@@ -19,6 +19,9 @@ import trp.trp2 as t2
 
 # variables
 data_bucket = st.secrets["data_bucket"]
+access_key_id = st.secrets["access_key_id"]
+secret_access_key = st.secrets["secret_access_key"]
+
 # file = st.secrets["file"]
 file = "/app/idp-genai-app/doc_sample/genai-demo-doc.pdf"
 idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png"
@@ -60,10 +63,10 @@ def generate_chunks(inp_str):
 # os.environ["REGION"] = region
 # role = sagemaker.get_execution_role()
 
-
-textract = boto3.client('textract', region_name=region)
-comprehend = boto3.client('comprehend', region_name=region)
-s3=boto3.client('s3', region_name=region)
+session = boto3.session.Session(aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
+textract = session.client('textract', region_name=region)
+comprehend = session.client('comprehend', region_name=region)
+s3=boto3.session('s3', region_name=region)
 prefix = 'idp/genai/'
 
 st.title('Conversation with Documents')
@@ -148,12 +151,12 @@ def getJobResults(jobId):
 endpoint_name = 'jumpstart-dft-hf-text2text-flan-t5-xxl'
 
 def query_endpoint(encoded_text):
-    client = boto3.client('runtime.sagemaker')
+    client = session.client('runtime.sagemaker')
     response = client.invoke_endpoint(EndpointName=endpoint_name, ContentType='application/x-text', Body=encoded_text)
     return response
 
 def query_endpoint_with_json_payload(encoded_json, endpoint_name):
-    client = boto3.client("runtime.sagemaker")
+    client = session.client("runtime.sagemaker")
     response = client.invoke_endpoint(
         EndpointName=endpoint_name, ContentType="application/json", Body=encoded_json
     )
@@ -326,8 +329,8 @@ st.subheader('Document Summarization')
 
 endpoint_name = 'jumpstart-example-huggingface-summariza-2023-04-20-22-11-07-644' 
 def query_endpoint(encoded_text):
-    client = boto3.client('runtime.sagemaker')
-    response = client.invoke_endpoint(EndpointName=endpoint_name, ContentType='application/x-text', Body=encoded_text)
+    client = session.client('runtime.sagemaker')
+    response = session.invoke_endpoint(EndpointName=endpoint_name, ContentType='application/x-text', Body=encoded_text)
     return response
 def parse_response(query_response):
     model_predictions = json.loads(query_response['Body'].read())
