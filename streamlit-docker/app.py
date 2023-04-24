@@ -19,8 +19,9 @@ import trp.trp2 as t2
 
 # variables
 data_bucket = st.secrets["data_bucket"]
-file = st.secrets["file"]
-idp_logo = st.secrets["idp_logo"]
+# file = st.secrets["file"]
+file = "/app/idp-genai-app/doc_sample/genai-demo-doc.pdf"
+idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png"
 region = "us-east-2"
 
 
