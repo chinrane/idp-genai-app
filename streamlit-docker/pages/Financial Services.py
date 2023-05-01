@@ -11,7 +11,7 @@ def show_pdf(file_path):
 
 #static files
 
-idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png"
+idp_logo = "/app/idp-genai-app/streamlit-docker/static/idp-logo.png"
 view_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/amazon-sec-filing-full.pdf"
 idp_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/pages/executive_office.pdf"
 page28 = "/app/idp-genai-app/streamlit-docker/static/examples/pages/page28.pdf"
