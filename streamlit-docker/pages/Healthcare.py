@@ -6,8 +6,8 @@ from utils.model_interface import classification, summarization
 from utils.textract_interface import detect_tables_forms, detect_text
 
 #static files
-idp_logo = "./static/idp-logo.png" 
-idp_demo_data = "static/examples/amazon-sec-demo.pdf"
+idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png" 
+idp_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/amazon-sec-demo.pdf"
 st.set_page_config(layout="wide")
 st.image(idp_logo, width=450, output_format='PNG')
 st.subheader('Powered by AWS Generative AI and AI Services for SEC Document Processing.')
