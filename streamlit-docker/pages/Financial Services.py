@@ -10,10 +10,11 @@ def show_pdf(file_path):
     st.markdown(pdf_display, unsafe_allow_html=True)
 
 #static files
-idp_logo = "./static/idp-logo.png"
-view_demo_data = "static/examples/amazon-sec-filing-full.pdf"
-idp_demo_data = "static/examples/pages/executive_office.pdf"
-page28 = "static/examples/pages/page28.pdf"
+
+idp_logo = "/app/idp-genai-app/streamlit-docker/idp-logo.png"
+view_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/amazon-sec-filing-full.pdf"
+idp_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/pages/executive_office.pdf"
+page28 = "/app/idp-genai-app/streamlit-docker/static/examples/pages/page28.pdf"
 st.set_page_config(layout="wide")
 st.image(idp_logo, width=450, output_format='PNG')
 st.subheader('Powered by AWS Generative AI and AI Services for SEC Document Processing.')
