@@ -14,6 +14,7 @@ def show_pdf(file_path):
 idp_logo = "/app/idp-genai-app/streamlit-docker/static/idp-logo.png"
 view_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/amazon-sec-filing-full.pdf"
 idp_demo_data = "/app/idp-genai-app/streamlit-docker/static/examples/pages/executive_office.pdf"
+table_data = "/app/idp-genai-app/streamlit-docker/static/examples/pages/forms-and-tables.pdf"
 page28 = "/app/idp-genai-app/streamlit-docker/static/examples/pages/page28.pdf"
 st.set_page_config(layout="wide")
 st.image(idp_logo, width=450, output_format='PNG')
@@ -58,11 +59,11 @@ with tab1:
 with tab2:
     st.header("Structured and Semi-Structured Data Extraction")
     with st.expander("Sample PDF 📁"):
-        show_pdf(view_demo_data)
+        show_pdf(table_data)
         
     if st.button('Extract Forms and Tables'):
 
-        generated_text,kvlist = detect_tables_forms(idp_demo_data)
+        generated_text,kvlist = detect_tables_forms(table_data)
         st.text(kvlist)
         st.dataframe(generated_text)
 
