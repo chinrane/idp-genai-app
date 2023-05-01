@@ -20,46 +20,46 @@ st.info(
     )
 
 st.header("Select a Demo")
+st.spinner(text="In progress...")
 
+# tab1, tab2, tab3, tab4, tab5 = st.tabs(
+#     [
+#         "Document Classification", 
+#         "Structured and Semi-Structured Data Extraction",
+#         "Document Summarization",
+#         "Document Question & Answering",
+#         "Mathematical Calculations",
+#         ])
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
-    [
-        "Document Classification", 
-        "Structured and Semi-Structured Data Extraction",
-        "Document Summarization",
-        "Document Question & Answering",
-        "Mathematical Calculations",
-        ])
+# # make it so we dont call textract for each button click need to store the text 
 
-# make it so we dont call textract for each button click need to store the text 
-
-with tab1:
-    st.header("Document Classification")
+# with tab1:
+#     st.header("Document Classification")
     
-    # prompt = st.text_area("Enter the text you want to classify", height=200)
-    if st.button('Classify the Sample'):
-        generated_text = detect_text(idp_demo_data)
-        llm_text = classification(generated_text)
+#     # prompt = st.text_area("Enter the text you want to classify", height=200)
+#     if st.button('Classify the Sample'):
+#         generated_text = detect_text(idp_demo_data)
+#         llm_text = classification(generated_text)
         
-        st.write("This document is classified as: ",llm_text) 
+#         st.write("This document is classified as: ",llm_text) 
     
-with tab2:
-    st.header("Structured and Semi-Structured Data Extraction")
-    if st.button('Extract Tables'):
+# with tab2:
+#     st.header("Structured and Semi-Structured Data Extraction")
+#     if st.button('Extract Tables'):
         
-        generated_text = detect_tables_forms(idp_demo_data)
-        st.dataframe(generated_text)
+#         generated_text = detect_tables_forms(idp_demo_data)
+#         st.dataframe(generated_text)
     
-with tab3:
-    st.header("Document Summarization")
-    if st.button('Summarize the Sample'):
-        generated_text = detect_text(idp_demo_data)
-        llm_summary = summarization(generated_text)
+# with tab3:
+#     st.header("Document Summarization")
+#     if st.button('Summarize the Sample'):
+#         generated_text = detect_text(idp_demo_data)
+#         llm_summary = summarization(generated_text)
         
-        st.text(llm_summary)
+#         st.text(llm_summary)
 
-with tab4:
-    st.header("Document Question & Answering")
+# with tab4:
+#     st.header("Document Question & Answering")
     
-with tab5:
-    st.header("Mathematical Calculations")
+# with tab5:
+#     st.header("Mathematical Calculations")
