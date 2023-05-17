@@ -11,6 +11,11 @@ Open a terminal and run:
 $ pip install streamlit
 ```
 
+## Prerequisites
+
+When deploying this app locally, you need to add a file called ```secrets.toml``` in a folder called ```.streamlit``` at the root of the app repo, and copy/paste your AWS Credentials as secrets into that file. AWS Credentials allow you to authenticate and authorize your requests when you interact with AWS Services like Amazon Textract, Amazon Comprehend, etc. Further instructions are available in the Streamlit library [Secrets management documentation](https://docs.streamlit.io/library/advanced-features/secrets-management).
+
+
 ## Quickstart
 
 This app is a multipage app where the "entrypoint file" is the first page the app will show to the users. You can think of the entrypoint file as the app's "main page". Here, the entrypoint file is ```Home.py```. The command to run this multipage app is:
